@@ -2,7 +2,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: user-service-hpa
-  namespace: cnpm-food
+  namespace: cnpm-food2
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -28,7 +28,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: restaurant-service-hpa
-  namespace: cnpm-food
+  namespace: cnpm-food2
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -54,7 +54,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: order-service-hpa
-  namespace: cnpm-food
+  namespace: cnpm-food2
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -80,7 +80,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: payment-service-hpa
-  namespace: cnpm-food
+  namespace: cnpm-food2
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -106,7 +106,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: api-gateway-hpa
-  namespace: cnpm-food
+  namespace: cnpm-food2
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
@@ -132,7 +132,7 @@ apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
   name: frontend-hpa
-  namespace: cnpm-food
+  namespace: cnpm-food2
 spec:
   scaleTargetRef:
     apiVersion: apps/v1

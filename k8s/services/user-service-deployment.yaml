@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: user-service
-  namespace: cnpm-food
+  namespace: cnpm-food2
   labels:
     app: user-service
 spec:
@@ -77,7 +77,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: user-service
-  namespace: cnpm-food
+  namespace: cnpm-food2
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/path: "/actuator/prometheus"
