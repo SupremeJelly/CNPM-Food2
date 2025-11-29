@@ -2,7 +2,7 @@ name: Integrated CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, src ]
+    branches: [ main ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
@@ -13,7 +13,7 @@ concurrency:
 
 env:
   REGISTRY: docker.io
-  NAMESPACE: cnpm-food
+  NAMESPACE: cnpm-food2
 
 jobs:
   # ========== STAGE 1: TEST (Parallel) ==========
@@ -363,9 +363,9 @@ jobs:
           context: ./user-service
           push: true
           tags: |
-            onlykohi/cnpm-user-service:latest
-            onlykohi/cnpm-user-service:${{ github.sha }}
-          cache-from: type=registry,ref=onlykohi/cnpm-user-service:latest
+            jelly1810/cnpm-user-service:latest
+            jelly1810/cnpm-user-service:${{ github.sha }}
+          cache-from: type=registry,ref=jelly1810/cnpm-user-service:latest
           cache-to: type=inline
 
       - name: Build and Push order-service
@@ -375,9 +375,9 @@ jobs:
           context: ./order-service
           push: true
           tags: |
-            onlykohi/cnpm-order-service:latest
-            onlykohi/cnpm-order-service:${{ github.sha }}
-          cache-from: type=registry,ref=onlykohi/cnpm-order-service:latest
+            jelly1810/cnpm-order-service:latest
+            jelly1810/cnpm-order-service:${{ github.sha }}
+          cache-from: type=registry,ref=jelly1810/cnpm-order-service:latest
           cache-to: type=inline
 
       - name: Build and Push restaurant-service
@@ -387,9 +387,9 @@ jobs:
           context: ./restaurant-service
           push: true
           tags: |
-            onlykohi/cnpm-restaurant-service:latest
-            onlykohi/cnpm-restaurant-service:${{ github.sha }}
-          cache-from: type=registry,ref=onlykohi/cnpm-restaurant-service:latest
+            jelly1810/cnpm-restaurant-service:latest
+            jelly1810/cnpm-restaurant-service:${{ github.sha }}
+          cache-from: type=registry,ref=jelly1810/cnpm-restaurant-service:latest
           cache-to: type=inline
 
       - name: Build and Push payment-service
@@ -399,9 +399,9 @@ jobs:
           context: ./payment-service
           push: true
           tags: |
-            onlykohi/cnpm-payment-service:latest
-            onlykohi/cnpm-payment-service:${{ github.sha }}
-          cache-from: type=registry,ref=onlykohi/cnpm-payment-service:latest
+            jelly1810/cnpm-payment-service:latest
+            jelly1810/cnpm-payment-service:${{ github.sha }}
+          cache-from: type=registry,ref=jelly1810/cnpm-payment-service:latest
           cache-to: type=inline
 
       - name: Build and Push API Gateway
@@ -411,9 +411,9 @@ jobs:
           context: ./api-gateway
           push: true
           tags: |
-            onlykohi/cnpm-api-gateway:latest
-            onlykohi/cnpm-api-gateway:${{ github.sha }}
-          cache-from: type=registry,ref=onlykohi/cnpm-api-gateway:latest
+            jelly1810/cnpm-api-gateway:latest
+            jelly1810/cnpm-api-gateway:${{ github.sha }}
+          cache-from: type=registry,ref=jelly1810/cnpm-api-gateway:latest
           cache-to: type=inline
 
       - name: Build and Push frontend
@@ -423,9 +423,9 @@ jobs:
           context: ./frontend
           push: true
           tags: |
-            onlykohi/cnpm-frontend:latest
-            onlykohi/cnpm-frontend:${{ github.sha }}
-          cache-from: type=registry,ref=onlykohi/cnpm-frontend:latest
+            jelly1810/cnpm-frontend:latest
+            jelly1810/cnpm-frontend:${{ github.sha }}
+          cache-from: type=registry,ref=jelly1810/cnpm-frontend:latest
           cache-to: type=inline
 
   # ========== STAGE 5: DEPLOY TO KUBERNETES (Only after successful image build) ==========
@@ -670,12 +670,12 @@ jobs:
           }
 
           Write-Host "Updating images to $imageTag for changed services..."
-          if ("${{ steps.changes.outputs.user }}" -eq "true") { kubectl set image deployment/user-service user-service=onlykohi/cnpm-user-service:$imageTag -n $env:NAMESPACE }
-          if ("${{ steps.changes.outputs.restaurant }}" -eq "true") { kubectl set image deployment/restaurant-service restaurant-service=onlykohi/cnpm-restaurant-service:$imageTag -n $env:NAMESPACE }
-          if ("${{ steps.changes.outputs.order }}" -eq "true") { kubectl set image deployment/order-service order-service=onlykohi/cnpm-order-service:$imageTag -n $env:NAMESPACE }
-          if ("${{ steps.changes.outputs.payment }}" -eq "true") { kubectl set image deployment/payment-service payment-service=onlykohi/cnpm-payment-service:$imageTag -n $env:NAMESPACE }
-          if ("${{ steps.changes.outputs.gateway }}" -eq "true") { kubectl set image deployment/api-gateway api-gateway=onlykohi/cnpm-api-gateway:$imageTag -n $env:NAMESPACE }
-          if ("${{ steps.changes.outputs.frontend }}" -eq "true") { kubectl set image deployment/frontend frontend=onlykohi/cnpm-frontend:$imageTag -n $env:NAMESPACE }
+          if ("${{ steps.changes.outputs.user }}" -eq "true") { kubectl set image deployment/user-service user-service=jelly1810/cnpm-user-service:$imageTag -n $env:NAMESPACE }
+          if ("${{ steps.changes.outputs.restaurant }}" -eq "true") { kubectl set image deployment/restaurant-service restaurant-service=jelly1810/cnpm-restaurant-service:$imageTag -n $env:NAMESPACE }
+          if ("${{ steps.changes.outputs.order }}" -eq "true") { kubectl set image deployment/order-service order-service=jelly1810/cnpm-order-service:$imageTag -n $env:NAMESPACE }
+          if ("${{ steps.changes.outputs.payment }}" -eq "true") { kubectl set image deployment/payment-service payment-service=jelly1810/cnpm-payment-service:$imageTag -n $env:NAMESPACE }
+          if ("${{ steps.changes.outputs.gateway }}" -eq "true") { kubectl set image deployment/api-gateway api-gateway=jelly1810/cnpm-api-gateway:$imageTag -n $env:NAMESPACE }
+          if ("${{ steps.changes.outputs.frontend }}" -eq "true") { kubectl set image deployment/frontend frontend=jelly1810/cnpm-frontend:$imageTag -n $env:NAMESPACE }
 
       - name: Wait for deployments to be ready
         shell: powershell

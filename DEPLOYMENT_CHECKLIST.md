@@ -16,6 +16,7 @@
 
 ### 2.2 Provision MySQL Database
 - [ ] Tạo project mới: `cnpm-food-db`
+ - [ ] Tạo project mới: `cnpm-food2-db`
 - [ ] Provision MySQL service
 - [ ] Lấy connection details:
   - Host: ________________
@@ -76,72 +77,72 @@ SELECT COUNT(*) FROM menu_items;   -- Phải có nhiều menu items
 
 ### 4.2 Deploy User Service
 - [ ] New Web Service > Existing Docker Image
-- [ ] Image: `docker.io/jelly1810/cnpm-food-user-service:latest`
-- [ ] Name: `cnpm-food-user-service`
+ - [ ] Image: `docker.io/jelly1810/cnpm-food2-user-service:latest`
+ - [ ] Name: `cnpm-food2-user-service`
 - [ ] Region: Singapore
 - [ ] Instance Type: Free
 - [ ] Copy env vars từ `render-env/user-service.env`
 - [ ] Advanced > Port: `8081`
 - [ ] Click "Create Web Service"
 - [ ] Đợi deploy xong (5-10 phút)
-- [ ] Test health: https://cnpm-food-user-service.onrender.com/actuator/health
+ - [ ] Test health: https://cnpm-food2-user-service.onrender.com/actuator/health
 - [ ] Status: _______________
 
 ### 4.3 Deploy Restaurant Service
 - [ ] New Web Service > Existing Docker Image
-- [ ] Image: `docker.io/jelly1810/cnpm-food-restaurant-service:latest`
-- [ ] Name: `cnpm-food-restaurant-service`
+ - [ ] Image: `docker.io/jelly1810/cnpm-food2-restaurant-service:latest`
+ - [ ] Name: `cnpm-food2-restaurant-service`
 - [ ] Region: Singapore
 - [ ] Copy env vars từ `render-env/restaurant-service.env`
 - [ ] Port: `8082`
 - [ ] Đợi deploy xong
-- [ ] Test: https://cnpm-food-restaurant-service.onrender.com/actuator/health
+ - [ ] Test: https://cnpm-food2-restaurant-service.onrender.com/actuator/health
 - [ ] Status: _______________
 
 ### 4.4 Deploy Order Service
 - [ ] New Web Service > Existing Docker Image
-- [ ] Image: `docker.io/jelly1810/cnpm-food-order-service:latest`
-- [ ] Name: `cnpm-food-order-service`
+ - [ ] Image: `docker.io/jelly1810/cnpm-food2-order-service:latest`
+ - [ ] Name: `cnpm-food2-order-service`
 - [ ] Region: Singapore
 - [ ] Copy env vars từ `render-env/order-service.env`
 - [ ] Port: `8083`
 - [ ] Đợi deploy xong
-- [ ] Test: https://cnpm-food-order-service.onrender.com/actuator/health
+ - [ ] Test: https://cnpm-food2-order-service.onrender.com/actuator/health
 - [ ] Status: _______________
 
 ### 4.5 Deploy Payment Service
 - [ ] New Web Service > Existing Docker Image
-- [ ] Image: `docker.io/jelly1810/cnpm-food-payment-service:latest`
-- [ ] Name: `cnpm-food-payment-service`
+ - [ ] Image: `docker.io/jelly1810/cnpm-food2-payment-service:latest`
+ - [ ] Name: `cnpm-food2-payment-service`
 - [ ] Region: Singapore
 - [ ] Copy env vars từ `render-env/payment-service.env`
 - [ ] Port: `8085`
 - [ ] Đợi deploy xong
-- [ ] Test: https://cnpm-food-payment-service.onrender.com/actuator/health
+ - [ ] Test: https://cnpm-food2-payment-service.onrender.com/actuator/health
 - [ ] Status: _______________
 
 ### 4.6 Deploy API Gateway
 - [ ] New Web Service > Existing Docker Image
-- [ ] Image: `docker.io/jelly1810/cnpm-food-api-gateway:latest`
-- [ ] Name: `cnpm-food-api-gateway`
+ - [ ] Image: `docker.io/jelly1810/cnpm-food2-api-gateway:latest`
+ - [ ] Name: `cnpm-food2-api-gateway`
 - [ ] Region: Singapore
 - [ ] Copy env vars từ `render-env/api-gateway.env`
 - [ ] Port: `9000`
 - [ ] Đợi deploy xong
-- [ ] Test: https://cnpm-food-api-gateway.onrender.com
+ - [ ] Test: https://cnpm-food2-api-gateway.onrender.com
 - [ ] Status: _______________
 
 ### 4.7 Deploy Frontend
 - [ ] New Web Service > Existing Docker Image
-- [ ] Image: `docker.io/jelly1810/cnpm-food-frontend:latest`
-- [ ] Name: `cnpm-food-frontend`
+ - [ ] Image: `docker.io/jelly1810/cnpm-food2-frontend:latest`
+ - [ ] Name: `cnpm-food2-frontend`
 - [ ] Region: Singapore
 - [ ] Port: `4200`
 - [ ] **IMPORTANT**: Cập nhật API URL trong Angular
   - Option A: Rebuild với environment.prod.ts mới
   - Option B: Dùng runtime config
 - [ ] Đợi deploy xong
-- [ ] Test: https://cnpm-food-frontend.onrender.com
+ - [ ] Test: https://cnpm-food2-frontend.onrender.com
 - [ ] Status: _______________
 
 ## Phase 5: Testing & Verification
@@ -149,13 +150,13 @@ SELECT COUNT(*) FROM menu_items;   -- Phải có nhiều menu items
 ### 5.1 Test Backend Services
 ```bash
 # User Service - Get all users
-curl https://cnpm-food-user-service.onrender.com/api/v1/users
+ curl https://cnpm-food2-user-service.onrender.com/api/v1/users
 
 # Restaurant Service - Get all restaurants
-curl https://cnpm-food-restaurant-service.onrender.com/api/v1/restaurants
+ curl https://cnpm-food2-restaurant-service.onrender.com/api/v1/restaurants
 
 # Test qua API Gateway
-curl https://cnpm-food-api-gateway.onrender.com/api/v1/restaurants
+ curl https://cnpm-food2-api-gateway.onrender.com/api/v1/restaurants
 ```
 - [ ] User Service hoạt động
 - [ ] Restaurant Service hoạt động
