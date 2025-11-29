@@ -436,8 +436,7 @@ jobs:
     needs: build-images
     runs-on: self-hosted
     environment: staging
-    # Temporarily disabled - set `if: false` to skip Kubernetes deploy from CI
-    if: false
+    # Deployment enabled (previously temporarily disabled)
     permissions:
       contents: read
 
