@@ -15,7 +15,7 @@ public class CorsConfig {
     public CorsWebFilter corsWebFilter() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
         corsConfiguration.setAllowedOrigins(List.of(
-            "http://localhost:4200",
+            "http://localhost:4300",
             "http://localhost",
             "http://localhost:80",
             "https://cnpm-food-frontend.onrender.com",

@@ -162,8 +162,8 @@ kubectl get svc -n $Namespace
 Write-Host ""
 Write-Step "Access Information:"
 Write-Host "===================="
-Write-Host "Frontend:       kubectl port-forward svc/frontend -n $Namespace 4200:80" -ForegroundColor Cyan
-Write-Host "API Gateway:    kubectl port-forward svc/api-gateway -n $Namespace 9000:9000" -ForegroundColor Cyan
+Write-Host "Frontend:       kubectl port-forward svc/frontend -n $Namespace 4300:80" -ForegroundColor Cyan
+Write-Host "API Gateway:    kubectl port-forward svc/api-gateway -n $Namespace 9001:9001" -ForegroundColor Cyan
 Write-Host "Grafana:        kubectl port-forward -n monitoring svc/monitoring-grafana 3000:80" -ForegroundColor Cyan
 Write-Host "Prometheus:     kubectl port-forward -n monitoring svc/monitoring-kube-prometheus-prometheus 9090:9090" -ForegroundColor Cyan
 Write-Host ""

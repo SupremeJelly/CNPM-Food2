@@ -10,11 +10,11 @@ THÀNH PHẦN CHÍNH
 
 1. DỊCH VỤ BACKEND
 
-	- API Gateway (Cổng: 8080): Điểm truy cập duy nhất cho các yêu cầu, xử lý định tuyến và cân bằng tải.
-	- User Service (Cổng: 8081): Quản lý xác thực người dùng, hồ sơ cá nhân và bảo mật JWT.
-	- Restaurant Service (Cổng: 8082): Xử lý dữ liệu nhà hàng, thực đơn và tải lên hình ảnh.
-	- Order Service (Cổng: 8083): Xử lý đơn hàng, tích hợp với người dùng/nhà hàng và theo dõi trạng thái đơn hàng.
-	- Payment Service (Cổng: 8085): Xử lý thanh toán, lưu lịch sử thanh toán và cập nhật trạng thái đơn hàng.
+	- API Gateway (Cổng: 9001): Điểm truy cập duy nhất cho các yêu cầu, xử lý định tuyến và cân bằng tải.
+	- User Service (Cổng: 8082): Quản lý xác thực người dùng, hồ sơ cá nhân và bảo mật JWT.
+	- Restaurant Service (Cổng: 8083): Xử lý dữ liệu nhà hàng, thực đơn và tải lên hình ảnh.
+	- Order Service (Cổng: 8084): Xử lý đơn hàng, tích hợp với người dùng/nhà hàng và theo dõi trạng thái đơn hàng.
+	- Payment Service (Cổng: 8086): Xử lý thanh toán, lưu lịch sử thanh toán và cập nhật trạng thái đơn hàng.
 
 2. GIAO DIỆN FRONTEND
 
@@ -37,11 +37,11 @@ Backend
 
 	### 1. Dịch vụ backend
 
-	- API Gateway (Cổng: 8080): Điểm truy cập duy nhất cho các yêu cầu, xử lý định tuyến và cân bằng tải.
-	- User Service (Cổng: 8081): Quản lý xác thực người dùng, hồ sơ cá nhân và bảo mật JWT.
-	- Restaurant Service (Cổng: 8082): Xử lý dữ liệu nhà hàng, thực đơn và tải lên hình ảnh.
-	- Order Service (Cổng: 8083): Xử lý đơn hàng, tích hợp với người dùng/nhà hàng và theo dõi trạng thái đơn hàng.
-	- Payment Service (Cổng: 8085): Xử lý thanh toán, lưu lịch sử thanh toán và cập nhật trạng thái đơn hàng.
+	- API Gateway (Cổng: 9001): Điểm truy cập duy nhất cho các yêu cầu, xử lý định tuyến và cân bằng tải.
+	- User Service (Cổng: 8082): Quản lý xác thực người dùng, hồ sơ cá nhân và bảo mật JWT.
+	- Restaurant Service (Cổng: 8083): Xử lý dữ liệu nhà hàng, thực đơn và tải lên hình ảnh.
+	- Order Service (Cổng: 8084): Xử lý đơn hàng, tích hợp với người dùng/nhà hàng và theo dõi trạng thái đơn hàng.
+	- Payment Service (Cổng: 8086): Xử lý thanh toán, lưu lịch sử thanh toán và cập nhật trạng thái đơn hàng.
 
 	### 2. Giao diện frontend
 

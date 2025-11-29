@@ -17,7 +17,7 @@ spec:
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/path: "/actuator/prometheus"
-        prometheus.io/port: "8085"
+        prometheus.io/port: "8184"
     spec:
       initContainers:
       - name: wait-for-mysql
@@ -28,7 +28,7 @@ spec:
         image: onlykohi/cnpm-payment-service:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8085
+        - containerPort: 8184
           name: http
         env:
         - name: JAVA_OPTS
@@ -40,13 +40,13 @@ spec:
         - name: SPRING_DATASOURCE_PASSWORD
           value: "pay"
         - name: ORDER_SERVICE_URL
-          value: "http://order-service:8083"
+          value: "http://order-service:8183"
         - name: RESTAURANT_SERVICE_URL
-          value: "http://restaurant-service:8082"
+          value: "http://restaurant-service:8182"
         startupProbe:
           httpGet:
             path: /actuator/health
-            port: 8085
+            port: 8184
           initialDelaySeconds: 20
           periodSeconds: 10
           timeoutSeconds: 5
@@ -54,14 +54,14 @@ spec:
         livenessProbe:
           httpGet:
             path: /actuator/health
-            port: 8085
+            port: 8184
           periodSeconds: 20
           timeoutSeconds: 5
           failureThreshold: 3
         readinessProbe:
           httpGet:
             path: /actuator/health/readiness
-            port: 8085
+            port: 8184
           periodSeconds: 10
           timeoutSeconds: 5
           failureThreshold: 3
@@ -81,14 +81,14 @@ metadata:
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/path: "/actuator/prometheus"
-    prometheus.io/port: "8085"
+    prometheus.io/port: "8184"
   labels:
     app: payment-service
 spec:
   type: ClusterIP
   ports:
-  - port: 8085
-    targetPort: 8085
+  - port: 8184
+    targetPort: 8184
     protocol: TCP
     name: http
   selector:

@@ -17,7 +17,7 @@ spec:
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/path: "/actuator/prometheus"
-        prometheus.io/port: "8082"
+        prometheus.io/port: "8182"
     spec:
       initContainers:
       - name: wait-for-mysql
@@ -28,7 +28,7 @@ spec:
         image: onlykohi/cnpm-restaurant-service:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8082
+        - containerPort: 8182
           name: http
         env:
         - name: JAVA_OPTS
@@ -44,7 +44,7 @@ spec:
         startupProbe:
           httpGet:
             path: /actuator/health
-            port: 8082
+              port: 8182
           initialDelaySeconds: 20
           periodSeconds: 10
           timeoutSeconds: 5
@@ -52,14 +52,14 @@ spec:
         livenessProbe:
           httpGet:
             path: /actuator/health
-            port: 8082
+            port: 8182
           periodSeconds: 20
           timeoutSeconds: 5
           failureThreshold: 3
         readinessProbe:
           httpGet:
             path: /actuator/health/readiness
-            port: 8082
+            port: 8182
           periodSeconds: 10
           timeoutSeconds: 5
           failureThreshold: 3
@@ -79,14 +79,14 @@ metadata:
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/path: "/actuator/prometheus"
-    prometheus.io/port: "8082"
+    prometheus.io/port: "8182"
   labels:
     app: restaurant-service
 spec:
   type: ClusterIP
   ports:
-  - port: 8082
-    targetPort: 8082
+  - port: 8182
+    targetPort: 8182
     protocol: TCP
     name: http
   selector:

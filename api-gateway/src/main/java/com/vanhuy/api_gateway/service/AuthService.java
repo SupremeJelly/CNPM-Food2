@@ -19,7 +19,7 @@ public class AuthService {
     @Autowired
     private RestTemplate restTemplate;
 
-    public AuthService(@org.springframework.beans.factory.annotation.Value("${USER_SERVICE_URL:http://localhost:8081}") String userServiceUrl) {
+    public AuthService(@org.springframework.beans.factory.annotation.Value("${USER_SERVICE_URL:http://localhost:8181}") String userServiceUrl) {
         this.authServiceUrl = userServiceUrl + "/api/v1/auth/validateToken";
     }
 

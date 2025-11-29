@@ -146,11 +146,11 @@ Payment Service:      docker.io/jelly1810/cnpm-food-payment-service:latest
 SERVICE PORTS
 ========================================
 Frontend:             4200
-API Gateway:          9000
-User Service:         8081
-Restaurant Service:   8082
-Order Service:        8083
-Payment Service:      8085
+API Gateway:          9001
+User Service:         8082
+Restaurant Service:   8083
+Order Service:        8084
+Payment Service:      8086
 "@
 
 $summaryFile | Out-File -FilePath "$envDir/ALL_ENV_VARIABLES.txt" -Encoding UTF8

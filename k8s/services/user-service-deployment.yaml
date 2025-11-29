@@ -17,7 +17,7 @@ spec:
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/path: "/actuator/prometheus"
-        prometheus.io/port: "8081"
+        prometheus.io/port: "8181"
     spec:
       initContainers:
       - name: wait-for-mysql
@@ -28,7 +28,7 @@ spec:
         image: onlykohi/cnpm-user-service:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8081
+        - containerPort: 8181
           name: http
         env:
         - name: JAVA_OPTS
@@ -40,13 +40,13 @@ spec:
         - name: SPRING_DATASOURCE_PASSWORD
           value: "user"
         - name: RESTAURANT_SERVICE_URL
-          value: "http://restaurant-service:8082"
+          value: "http://restaurant-service:8182"
         - name: USER_SERVICE_URL
-          value: "http://user-service:8081"
+          value: "http://user-service:8181"
         startupProbe:
           httpGet:
             path: /actuator/health
-            port: 8081
+            port: 8181
           initialDelaySeconds: 20
           periodSeconds: 10
           timeoutSeconds: 5
@@ -54,14 +54,14 @@ spec:
         livenessProbe:
           httpGet:
             path: /actuator/health
-            port: 8081
+            port: 8181
           periodSeconds: 20
           timeoutSeconds: 5
           failureThreshold: 3
         readinessProbe:
           httpGet:
             path: /actuator/health/readiness
-            port: 8081
+            port: 8181
           periodSeconds: 10
           timeoutSeconds: 5
           failureThreshold: 3
@@ -81,14 +81,14 @@ metadata:
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/path: "/actuator/prometheus"
-    prometheus.io/port: "8081"
+    prometheus.io/port: "8181"
   labels:
     app: user-service
 spec:
   type: ClusterIP
   ports:
-  - port: 8081
-    targetPort: 8081
+  - port: 8181
+    targetPort: 8181
     protocol: TCP
     name: http
   selector:

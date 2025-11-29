@@ -17,7 +17,7 @@ spec:
       annotations:
         prometheus.io/scrape: "true"
         prometheus.io/path: "/actuator/prometheus"
-        prometheus.io/port: "8083"
+        prometheus.io/port: "8183"
     spec:
       initContainers:
       - name: wait-for-mysql
@@ -28,7 +28,7 @@ spec:
         image: onlykohi/cnpm-order-service:latest
         imagePullPolicy: Always
         ports:
-        - containerPort: 8083
+        - containerPort: 8183
           name: http
         env:
         - name: JAVA_OPTS
@@ -40,15 +40,15 @@ spec:
         - name: SPRING_DATASOURCE_PASSWORD
           value: "order"
         - name: RESTAURANT_SERVICE_URL
-          value: "http://restaurant-service:8082"
+          value: "http://restaurant-service:8182"
         - name: PAYMENT_SERVICE_URL
-          value: "http://payment-service:8085"
+          value: "http://payment-service:8184"
         - name: USER_SERVICE_URL
-          value: "http://user-service:8081"
+          value: "http://user-service:8181"
         startupProbe:
           httpGet:
             path: /actuator/health
-            port: 8083
+            port: 8183
           initialDelaySeconds: 20
           periodSeconds: 10
           timeoutSeconds: 5
@@ -56,14 +56,14 @@ spec:
         livenessProbe:
           httpGet:
             path: /actuator/health
-            port: 8083
+            port: 8183
           periodSeconds: 20
           timeoutSeconds: 5
           failureThreshold: 3
         readinessProbe:
           httpGet:
             path: /actuator/health/readiness
-            port: 8083
+            port: 8183
           periodSeconds: 10
           timeoutSeconds: 5
           failureThreshold: 3
@@ -83,14 +83,14 @@ metadata:
   annotations:
     prometheus.io/scrape: "true"
     prometheus.io/path: "/actuator/prometheus"
-    prometheus.io/port: "8083"
+    prometheus.io/port: "8183"
   labels:
     app: order-service
 spec:
   type: ClusterIP
   ports:
-  - port: 8083
-    targetPort: 8083
+  - port: 8183
+    targetPort: 8183
     protocol: TCP
     name: http
   selector:

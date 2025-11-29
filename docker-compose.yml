@@ -32,10 +32,10 @@ services:
       SPRING_DATASOURCE_USERNAME: "paymentservice"
       SPRING_DATASOURCE_PASSWORD: "pay"
       # Service URLs for Feign Clients
-      ORDER_SERVICE_URL: "http://order-service:8083"
-      RESTAURANT_SERVICE_URL: "http://restaurant-service:8082"
+      ORDER_SERVICE_URL: "http://order-service:8084"
+      RESTAURANT_SERVICE_URL: "http://restaurant-service:8083"
     ports:
-      - "8085:8085"
+      - "8086:8086"
     depends_on:
       mysql-db:
         condition: service_healthy
@@ -53,11 +53,11 @@ services:
       SPRING_DATASOURCE_USERNAME: "orderservice"
       SPRING_DATASOURCE_PASSWORD: "order"
       # Service URLs for Feign Clients
-      USER_SERVICE_URL: "http://user-service:8081"
-      RESTAURANT_SERVICE_URL: "http://restaurant-service:8082"
+      USER_SERVICE_URL: "http://user-service:8082"
+      RESTAURANT_SERVICE_URL: "http://restaurant-service:8083"
       NOTIFICATION_SERVICE_URL: "http://notification-service:8084/api/v1/notifications"
     ports:
-      - "8083:8083"
+      - "8084:8084"
     depends_on:
       mysql-db:
         condition: service_healthy
@@ -75,7 +75,7 @@ services:
       SPRING_DATASOURCE_USERNAME: "restaurantservice"
       SPRING_DATASOURCE_PASSWORD: "res"
     ports:
-      - "8082:8082"
+      - "8083:8083"
     depends_on:
       mysql-db:
         condition: service_healthy
@@ -97,13 +97,13 @@ services:
       JWT_EXPIRATION: "86400000"
       # File upload
       FILE_UPLOAD_DIR: "/app/uploads"
-      APP_BASE_URL: "http://user-service:8081"
+      APP_BASE_URL: "http://user-service:8082"
       # Frontend URL
-      APP_FRONTEND_URL: "http://localhost:4200"
+      APP_FRONTEND_URL: "http://localhost:4300"
       # Notification service URL
       NOTIFICATION_SERVICE_URL: "http://notification-service:8084/api/v1/notifications"
     ports:
-      - "8081:8081"
+      - "8082:8082"
     depends_on:
       mysql-db:
         condition: service_healthy
@@ -120,12 +120,12 @@ services:
     container_name: api-gateway
     environment:
       # Service URLs - sử dụng container names
-      RESTAURANT_SERVICE_URL: "http://restaurant-service:8082"
-      ORDER_SERVICE_URL: "http://order-service:8083"
-      USER_SERVICE_URL: "http://user-service:8081"
-      PAYMENT_SERVICE_URL: "http://payment-service:8085"
+      RESTAURANT_SERVICE_URL: "http://restaurant-service:8083"
+      ORDER_SERVICE_URL: "http://order-service:8084"
+      USER_SERVICE_URL: "http://user-service:8082"
+      PAYMENT_SERVICE_URL: "http://payment-service:8086"
     ports:
-      - "9000:9000"
+      - "9001:9001"
     depends_on:
       - mysql-db
       - order-service
@@ -141,7 +141,7 @@ services:
       dockerfile: Dockerfile
     container_name: frontend
     ports:
-      - "4200:4200"
+      - "4300:4300"
     volumes:
       - ./frontend:/app
       - /app/node_modules

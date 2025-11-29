@@ -68,7 +68,9 @@ jobs:
                 fi
               done < "$tlog"
               if [ -n "$T_VALUES" ]; then
-                T_STREAM=$(printf '{"stream":{"service":"%s","job":"ci","log_type":"test","type":"test_output"},"values":[%s]}' "$SERVICE" "$T_VALUES")
+                # include namespace label so Loki streams carry the repo namespace
+                NS_ESC=$(printf '%s' "$NAMESPACE" | python -c 'import json,sys; s=sys.stdin.read(); print(json.dumps(s)[1:-1])')
+                T_STREAM=$(printf '{"stream":{"service":"%s","job":"ci","log_type":"test","type":"test_output","namespace":"%s"},"values":[%s]}' "$SERVICE" "$NS_ESC" "$T_VALUES")
                 if [ -z "$EXTRA_STREAMS" ]; then
                   EXTRA_STREAMS="$T_STREAM"
                 else
@@ -755,6 +757,8 @@ jobs:
           fi
           
           TS=$(date +%s)000000000
+          # Escape namespace for safe JSON embedding
+          NS_ESC=$(printf '%s' "$NAMESPACE" | python -c 'import json,sys; s=sys.stdin.read(); print(json.dumps(s)[1:-1])')
           # Log mở đầu workflow
           LOGS="[[\"$TS\",\"type=workflow_start workflow=${{ github.workflow }} run=${{ github.run_id }} branch=${{ github.ref_name }}\"]]"
           
@@ -1025,7 +1029,7 @@ jobs:
           # --- 3. SEND TO LOKI ---
           
           # Gửi Payload chính (Job logs)
-          PAYLOAD="{\"streams\":[{\"stream\":{\"job\":\"ci\",\"workflow\":\"${{ github.workflow }}\",\"run_id\":\"${{ github.run_id }}\",\"test_status\":\"$TEST_STATUS\"},\"values\":$LOGS}]}"
+          PAYLOAD="{\"streams\":[{\"stream\":{\"job\":\"ci\",\"workflow\":\"${{ github.workflow }}\",\"run_id\":\"${{ github.run_id }}\",\"test_status\":\"$TEST_STATUS\",\"namespace\":\"$NS_ESC\"},\"values\":$LOGS}]}"
           
           TMP_MAIN_PAYLOAD=$(mktemp)
           printf '%s' "$PAYLOAD" > "$TMP_MAIN_PAYLOAD"

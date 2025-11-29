@@ -2,7 +2,7 @@
 
 ## 🎯 Vấn đề
 
-Frontend hiện đang trỏ đến `localhost:9000` trong file `environment.prod.ts`. 
+Frontend hiện đang trỏ đến `localhost:9001` trong file `environment.prod.ts`. 
 Khi deploy lên Render, cần cập nhật để trỏ đến URL của API Gateway trên Render.
 
 ## ✅ Giải pháp
@@ -15,7 +15,7 @@ Mở file: `frontend/src/environments/environment.prod.ts`
 ```typescript
 export const environment = {
     production: true,
-    baseUrl: 'http://localhost:9000/api/v1'
+   baseUrl: 'http://localhost:9001/api/v1'
 };
 ```
 
@@ -57,7 +57,7 @@ cd ..
 
 ### Phase 1: Deploy Backend Services trước
 
-1. **User Service** (Port 8081)
+1. **User Service** (Port 8082)
    - Image: `jelly1810/cnpm-food-user-service:latest`
    - Copy env vars từ file hướng dẫn
    - Đợi status: **Live** (màu xanh)
@@ -77,7 +77,7 @@ cd ..
    - Copy env vars
    - Đợi status: **Live**
 
-5. **API Gateway** (Port 9000)
+5. **API Gateway** (Port 9001)
    - Image: `jelly1810/cnpm-food-api-gateway:latest`
    - Environment Variables:
    ```
@@ -96,7 +96,7 @@ cd ..
    - Rebuild và push image mới
    - Deploy lên Render
 
-7. **Frontend Service** (Port 4200)
+7. **Frontend Service** (Port 4300)
    - Image: `jelly1810/cnpm-food-frontend:latest` (version mới)
    - Region: Singapore
    - Không cần env vars
@@ -152,7 +152,7 @@ public class WebConfig implements WebMvcConfigurer {
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/**")
                 .allowedOrigins(
-                    "http://localhost:4200",
+                    "http://localhost:4300",
                     "https://cnpm-food-frontend.onrender.com"  // Thêm dòng này
                 )
                 .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
