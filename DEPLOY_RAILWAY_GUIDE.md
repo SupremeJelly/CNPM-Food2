@@ -14,7 +14,7 @@
 3. Đặt tên project: `cnpm-food-db`
 
 ### Lấy thông tin kết nối
-- Sau khi tạo xong, Railway sẽ cung cấp connection details:
+Sau khi tạo xong, Railway sẽ cung cấp connection details:
 - **Host**: `containers-us-west-xxx.railway.app`
 - **Port**: `6379` (hoặc tương tự)
 - **Username**: `root`
@@ -140,7 +140,7 @@ SPRING_DATASOURCE_PASSWORD=RsXUgVBQiJNTlKlfZXCqDvbyKrqQtyHU
 SPRING_DATASOURCE_URL=jdbc:mysql://caboose.proxy.rlwy.net:56379/order_db?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
 SPRING_DATASOURCE_USERNAME=root
 SPRING_DATASOURCE_PASSWORD=RsXUgVBQiJNTlKlfZXCqDvbyKrqQtyHU
-USER_SERVICE_URL=https://cnpm-food2-user-service.onrender.com
+USER_SERVICE_URL=https://cnpm-food-user-service.onrender.com
 RESTAURANT_SERVICE_URL=https://cnpm-food-restaurant-service.onrender.com
 ```
 
@@ -149,7 +149,7 @@ RESTAURANT_SERVICE_URL=https://cnpm-food-restaurant-service.onrender.com
 SPRING_DATASOURCE_URL=jdbc:mysql://caboose.proxy.rlwy.net:56379/payment_db?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
 SPRING_DATASOURCE_USERNAME=root
 SPRING_DATASOURCE_PASSWORD=RsXUgVBQiJNTlKlfZXCqDvbyKrqQtyHU
-ORDER_SERVICE_URL=https://cnpm-food2-order-service.onrender.com
+ORDER_SERVICE_URL=https://cnpm-food-order-service.onrender.com
 RESTAURANT_SERVICE_URL=https://cnpm-food-restaurant-service.onrender.com
 ```
 
@@ -178,7 +178,7 @@ RESTAURANT_SERVICE_URL=https://cnpm-food-restaurant-service.onrender.com
 
 **Environment Variables:**
 ```
-RESTAURANT_SERVICE_URL=https://cnpm-food2-restaurant-service.onrender.com
+RESTAURANT_SERVICE_URL=https://cnpm-food-restaurant-service.onrender.com
 ORDER_SERVICE_URL=https://cnpm-food-order-service.onrender.com
 USER_SERVICE_URL=https://cnpm-food-user-service.onrender.com
 PAYMENT_SERVICE_URL=https://cnpm-food-payment-service.onrender.com
@@ -199,7 +199,7 @@ SPRING_DATASOURCE_PASSWORD={RAILWAY_PASSWORD}
 JWT_SECRET_KEY=5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
 JWT_EXPIRATION=86400000
 FILE_UPLOAD_DIR=/app/uploads
-APP_BASE_URL=https://cnpm-food2-user-service.onrender.com
+APP_BASE_URL=https://cnpm-food-user-service.onrender.com
 APP_FRONTEND_URL=https://cnpm-food-frontend.onrender.com
 NOTIFICATION_SERVICE_URL=https://cnpm-food-notification-service.onrender.com/api/v1/notifications
 ```
@@ -230,7 +230,7 @@ SPRING_DATASOURCE_PASSWORD={RAILWAY_PASSWORD}
 SPRING_DATASOURCE_URL=jdbc:mysql://{RAILWAY_HOST}:{RAILWAY_PORT}/order_db?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
 SPRING_DATASOURCE_USERNAME=root
 SPRING_DATASOURCE_PASSWORD={RAILWAY_PASSWORD}
-USER_SERVICE_URL=https://cnpm-food2-user-service.onrender.com
+USER_SERVICE_URL=https://cnpm-food-user-service.onrender.com
 RESTAURANT_SERVICE_URL=https://cnpm-food-restaurant-service.onrender.com
 NOTIFICATION_SERVICE_URL=https://cnpm-food-notification-service.onrender.com/api/v1/notifications
 ```
@@ -247,7 +247,7 @@ NOTIFICATION_SERVICE_URL=https://cnpm-food-notification-service.onrender.com/api
 SPRING_DATASOURCE_URL=jdbc:mysql://{RAILWAY_HOST}:{RAILWAY_PORT}/payment_db?useSSL=true&allowPublicKeyRetrieval=true&serverTimezone=UTC&useUnicode=true&characterEncoding=UTF-8
 SPRING_DATASOURCE_USERNAME=root
 SPRING_DATASOURCE_PASSWORD={RAILWAY_PASSWORD}
-ORDER_SERVICE_URL=https://cnpm-food2-order-service.onrender.com
+ORDER_SERVICE_URL=https://cnpm-food-order-service.onrender.com
 RESTAURANT_SERVICE_URL=https://cnpm-food-restaurant-service.onrender.com
 ```
 

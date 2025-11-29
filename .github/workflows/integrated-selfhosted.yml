@@ -2,7 +2,7 @@ name: Integrated CI/CD Pipeline
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main , src ]
   pull_request:
     branches: [ main ]
   workflow_dispatch:
@@ -734,7 +734,6 @@ jobs:
     runs-on: ubuntu-latest
     if: always()
     environment: staging
-    
     steps:
       - name: Download test results
         uses: actions/download-artifact@v4
