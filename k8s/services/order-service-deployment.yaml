@@ -25,7 +25,7 @@ spec:
         command: ['sh', '-c', 'until nc -z mysql 3306; do echo waiting for mysql; sleep 2; done']
       containers:
       - name: order-service
-        image: onlykohi/cnpm-order-service:latest
+        image: jelly1810/cnpm-order-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8183

@@ -8,7 +8,7 @@ services:
       MYSQL_PASSWORD: apassword
     command: ["--character-set-server=utf8mb4", "--collation-server=utf8mb4_unicode_ci"]
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql-data:/var/lib/mysql
       # optional: put init SQL files (create DBs/users) in ./mysql-init
@@ -35,7 +35,7 @@ services:
       ORDER_SERVICE_URL: "http://order-service:8084"
       RESTAURANT_SERVICE_URL: "http://restaurant-service:8083"
     ports:
-      - "8086:8086"
+      - "8184:8086"
     depends_on:
       mysql-db:
         condition: service_healthy
@@ -57,7 +57,7 @@ services:
       RESTAURANT_SERVICE_URL: "http://restaurant-service:8083"
       NOTIFICATION_SERVICE_URL: "http://notification-service:8084/api/v1/notifications"
     ports:
-      - "8084:8084"
+      - "8183:8084"
     depends_on:
       mysql-db:
         condition: service_healthy
@@ -75,7 +75,7 @@ services:
       SPRING_DATASOURCE_USERNAME: "restaurantservice"
       SPRING_DATASOURCE_PASSWORD: "res"
     ports:
-      - "8083:8083"
+      - "8182:8083"
     depends_on:
       mysql-db:
         condition: service_healthy
@@ -103,7 +103,7 @@ services:
       # Notification service URL
       NOTIFICATION_SERVICE_URL: "http://notification-service:8084/api/v1/notifications"
     ports:
-      - "8082:8082"
+      - "8181:8082"
     depends_on:
       mysql-db:
         condition: service_healthy

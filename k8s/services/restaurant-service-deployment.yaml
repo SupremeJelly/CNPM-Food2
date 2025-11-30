@@ -25,7 +25,7 @@ spec:
         command: ['sh', '-c', 'until nc -z mysql 3306; do echo waiting for mysql; sleep 2; done']
       containers:
       - name: restaurant-service
-        image: onlykohi/cnpm-restaurant-service:latest
+        image: jelly1810/cnpm-restaurant-service:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8182

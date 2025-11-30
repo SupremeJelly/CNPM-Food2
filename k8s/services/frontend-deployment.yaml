@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: frontend
-        image: onlykohi/cnpm-frontend:latest
+        image: jelly1810/cnpm-frontend:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 80
